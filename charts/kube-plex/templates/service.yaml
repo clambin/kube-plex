@@ -47,12 +47,6 @@ spec:
 {{ if (and (eq .Values.service.type "NodePort") (not (empty .Values.service.nodePort))) }}
       nodePort: {{.Values.service.nodePort}}
 {{ end }}
-    - name: http
-      port: 80
-      targetPort: pms
-    - name: https
-      port: 443
-      targetPort: 32443
   selector:
     app: {{ template "name" . }}
     release: {{ .Release.Name }}
